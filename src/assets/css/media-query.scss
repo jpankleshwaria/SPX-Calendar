@@ -1,0 +1,60 @@
+@media (max-width: 991.98px) {
+  .sidenav {
+    position: fixed;
+    z-index: 1019;
+    width: 254px;
+    height: calc(100vh - 60px);
+  }
+}
+
+@media (min-width: 576px) {
+  html:not([dir="rtl"]) .main.sidenav-active {
+    margin-left: 254px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  h3 {
+    font-size: 1.15rem;
+  }
+  .h2,
+  h2 {
+    font-size: 1.3rem;
+  }
+  .profile-header .lead {
+    font-size: 0.95rem;
+  }
+  body .ui-table .ui-table-caption {
+    border-bottom: 1px solid #c8c8c8;
+    font-weight: 700;
+  }
+  .edit-btn {
+    background: #007ad9 !important;
+    padding: 0.329em 1em !important;
+    color: $white !important;
+  }
+  .main.sidenav-active::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 98;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background: rgba(0, 0, 0, 0.7);
+    -webkit-animation: opacity 0.25s;
+    animation: opacity 0.25s;
+  }
+}
+
+@media print {
+  :not(.printEle) {
+      visibility: hidden;
+  }
+}
+
+@media print {
+  .printEle {
+      visibility: visible
+  }
+}

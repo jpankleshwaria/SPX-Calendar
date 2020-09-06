@@ -1,0 +1,19 @@
+@import 'color';
+button:not([mat-menu-item]):not(:first-child) {
+    margin-left: 10px;
+}
+.mat-raised-button.mat-default-btn {
+    background: $accent-color;
+    color: $button-primary-font;
+}
+.mat-raised-button.mat-primary-btn {
+    background: $primary-color;
+    color: $button-primary-font;
+}
+.mat-raised-button.mat-secondary-btn {
+    background: $button-secondary;
+    color: $button-secondary-font;
+}
+.fit-content {
+    width: fit-content;
+}

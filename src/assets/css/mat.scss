@@ -1,0 +1,25 @@
+.mat-expansion-panel-body {
+    padding: 0 15px 16px 15px !important;
+}
+.mat-expansion-panel-header {
+    padding: 0 15px !important;
+}
+
+.mat-dialog-content {
+    max-height: 100% !important;
+    height: 100%;
+}
+.mat-expansion-panel-header {
+    font-weight: 500;
+}
+
+.mat-snack-bar-container {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    min-height: unset !important;
+    max-width: unset !important;
+}

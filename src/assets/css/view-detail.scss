@@ -1,0 +1,88 @@
+@import "../css/color.scss";
+
+.view-detail {
+  .row:not(:first-child) {
+    margin-top: 25px;
+  }
+  .section {
+    border-top: solid 1px #e1e1e1;
+    padding-top: 10px;
+    margin-top: 10px;
+  }
+}
+.label-info {
+  // display: flex;
+  label {
+    margin-bottom: 0.1em;
+    color: #8a8a8a;
+    font-size: 12px;
+  }
+  .info {
+    margin: 0px;
+    font-size: 13px;
+  }
+}
+.detail {
+  width: 100%;
+  ul {
+    list-style: none;
+    li {
+      margin-bottom: 7px;
+      border-bottom: 1px solid #d8d8d8;
+      padding-bottom: 7px;
+    }
+    .label-info {
+      display: flex;
+      label {
+        margin-right: 15px;
+        flex: 1 0 auto;
+      }
+      .info {
+        margin-left: auto;
+        text-align: right;
+        span {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+.product-list {
+  .product {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    .img {
+      width: 100px;
+      margin-right: 10px;
+      box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
+      margin-bottom: 10px;
+    }
+  }
+
+  .actions {
+    z-index: 9;
+    min-width: 55px;
+    margin-left: 10px;
+    text-align: right;
+    .icon {
+      cursor: pointer;
+      color: $white;
+      padding: 1px 0px;
+      text-align: center;
+      min-width: 22px;
+      display: inline-block;
+      border-radius: 4px;
+    }
+    .edit {
+      @extend .icon;
+      margin-right: 2px;
+      border-right: solid 1px $white;
+      background: #085776;
+    }
+    .delete {
+      @extend .icon;
+      background: #d41b1b;
+    }
+  }
+}

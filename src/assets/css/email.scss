@@ -1,0 +1,23 @@
+.email {
+  margin-top: 20px;
+  .to,
+  .subject {
+    margin: 10px 0px;
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    .label {
+      margin-right: 20px;
+      font-size: 12px;
+      color: #8a8a8a;
+      min-width: 60px;
+    }
+  }
+  .body {
+    margin: 10px 0px;
+    pre {
+      border: solid 1px $gray;
+      padding: 10px;
+    }
+  }
+}
