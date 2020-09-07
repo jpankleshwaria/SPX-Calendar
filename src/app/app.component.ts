@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DaysEnum, enumSelector, MonthsEnum, appConstant } from './constants/app-constants';
+import moment from 'moment';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +12,10 @@ export class AppComponent implements OnInit {
   days = enumSelector(DaysEnum);
   months = enumSelector(MonthsEnum);
   dates;
-  selectedYear = 2020;
-  selectedMonth = 9;
-  selectedDate = 10;
+  selectedYear = 2019;
+  selectedMonth = 1;
+  selectedDate = 1;
+  selectedDay = 2;
  
   constructor(){
     this.days = this.days.slice(this.days.length / 2);
@@ -22,12 +24,17 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.dates = appConstant.dateValues;
-    console.log(this.dates);
+  }
+
+  displayMonthCondition(month, index) {
+    var currDate = moment( month + "-1-" + this.selectedYear, "MM-DD-YYYY");
+    if(currDate.day() == index) {
+      return true;
+    }
+    return false;
   }
 
   displayDateCondition(dateNum, index) {
-    console.log(index , dateNum + ' = ' + parseInt(dateNum) % 7 );
-    
     if(index == 7)
       index = 0;
 
@@ -39,6 +46,13 @@ export class AppComponent implements OnInit {
 
   displayDayCondition(checkValue, elementValue) {
     if(checkValue > elementValue ) {
+      return true;
+    }
+    return false;
+  }
+
+  displaySelectedDay(checkValue) {
+    if(checkValue == this.selectedDay) {
       return true;
     }
     return false;

@@ -35,27 +35,131 @@
   </div>
   <!-- Resources -->
   <div class="container containerMaxWidth ml-10" style="width: 100%;">
-    <table>
+    <table width="100%" cellPadding="2" cellSpacing="2" border="solid black 2px">
       <tr>
-        <td>
+        <td width="30%">
           <div class="col-lg-4">
-            year
+            <i class="fa fa-caret-left faIco"></i><b> {{ selectedYear }} </b><i class="fa fa-caret-right faIco"></i>
           </div>
         </td>
-        <td>
+        <td width="70%">
           <div class="col-lg-8">
             months
+            <table cellPadding="1" cellSpacing="1" border="solid black 2px" width=100%>
+              <tr class="row">
+                <ng-container *ngFor="let m1 of this.months; let x = index">
+                    <ng-container *ngIf="displayMonthCondition(m1.value,1)">
+                      <td >
+                        {{ m1.title }} 1
+                      </td>
+                    </ng-container>
+                  </ng-container>
+
+                  <ng-container *ngFor="let m1 of this.months; let x = index">
+
+                    <ng-container *ngIf="displayMonthCondition(m1.value,2)">
+                      <td >
+                        {{ m1.title }} 2
+                      </td>
+                    </ng-container>
+                  </ng-container>
+
+                  <ng-container *ngFor="let m1 of this.months; let x = index">
+                    <ng-container *ngIf="displayMonthCondition(m1.value,3)">
+                      <td >
+                        {{ m1.title }} 3
+                      </td>
+                    </ng-container>
+                  </ng-container>
+
+                  <ng-container *ngFor="let m1 of this.months; let x = index">
+                    <ng-container *ngIf="displayMonthCondition(m1.value,4)">
+                      <td >
+                        {{ m1.title }} 4
+                      </td>
+                    </ng-container>
+                  </ng-container>
+
+                  <!-- <ng-container *ngFor="let m1 of this.months; let x = index">
+                    <ng-container *ngIf="displayMonthCondition(m1.value,5)">
+                      <td >
+                        {{ m1.title }} 5
+                      </td>
+                    </ng-container>
+                  </ng-container>
+
+                  <ng-container *ngFor="let m1 of this.months; let x = index">
+                    <ng-container *ngIf="displayMonthCondition(m1.value,6)">
+                      <td >
+                        {{ m1.title }} 6
+                      </td>
+                    </ng-container>
+                  </ng-container>
+
+                  <ng-container *ngFor="let m1 of this.months; let x = index">
+                    <ng-container *ngIf="displayMonthCondition(m1.value,0)">
+                      <td >
+                        {{ m1.title }} 7
+                      </td>
+                    </ng-container>
+                </ng-container> -->
+              </tr>
+              <tr class="row">
+                <ng-container *ngFor="let m1 of this.months; let x = index">
+                    <ng-container *ngIf="displayMonthCondition(m1.value,5)">
+                      <td >
+                        {{ m1.title }} 1
+                      </td>
+                    </ng-container>
+                  </ng-container>
+
+                  <ng-container *ngFor="let m1 of this.months; let x = index">
+
+                    <ng-container *ngIf="displayMonthCondition(m1.value,6)">
+                      <td >
+                        {{ m1.title }} 2
+                      </td>
+                    </ng-container>
+                  </ng-container>
+
+                  <ng-container *ngFor="let m1 of this.months; let x = index">
+                    <ng-container *ngIf="displayMonthCondition(m1.value,0)">
+                      <td >
+                        {{ m1.title }} 3
+                      </td>
+                    </ng-container>
+                  </ng-container>
+
+                  <ng-container *ngFor="let m1 of this.months; let x = index">
+                    <ng-container *ngIf="displayMonthCondition(m1.value,4)">
+                      <td >
+                        {{ m1.title }} 4
+                      </td>
+                    </ng-container>
+                  </ng-container>
+
+              </tr>
+              <tr class="row">
+                <ng-container *ngFor="let m1 of this.months; let x = index">
+                    <ng-container *ngIf="x < 7">
+                      <td >
+                        {{ m1.title }}
+                      </td>
+                    </ng-container>
+                </ng-container>
+              </tr>
+            </table>
           </div>
         </td>
       </tr>
       <tr>
-        <td>
+        <td width="30%">
           <div class="col">
-            <table>
+            <table cellPadding="1" cellSpacing="1" border="solid black 2px" width=100%>
               <tr class="row">
                 <ng-container *ngFor="let d1 of this.dates; let a = index">
                     <ng-container *ngIf="displayDateCondition(d1,1)">
-                      <td >
+                      <td [ngClass]="(d1 == selectedDate)?'today day':'day'">
                         {{ d1 }}
                       </td>
                     </ng-container>
@@ -64,7 +168,7 @@
               <tr class="row">
                 <ng-container *ngFor="let d1 of this.dates; let a = index">
                     <ng-container *ngIf="displayDateCondition(d1,2)">
-                      <td >
+                      <td [ngClass]="(d1 == selectedDate)?'today day':'day'">
                         {{ d1 }}
                       </td>
                     </ng-container>
@@ -73,7 +177,7 @@
               <tr class="row">
                 <ng-container *ngFor="let d1 of this.dates; let a = index">
                     <ng-container *ngIf="displayDateCondition(d1,3)">
-                      <td >
+                      <td [ngClass]="(d1 == selectedDate)?'today day':'day'">
                         {{ d1 }}
                       </td>
                     </ng-container>
@@ -82,7 +186,7 @@
               <tr class="row">
                 <ng-container *ngFor="let d1 of this.dates; let a = index">
                     <ng-container *ngIf="displayDateCondition(d1,4)">
-                      <td >
+                      <td [ngClass]="(d1 == selectedDate)?'today day':'day'">
                         {{ d1 }}
                       </td>
                     </ng-container>
@@ -91,7 +195,7 @@
               <tr class="row">
                 <ng-container *ngFor="let d1 of this.dates; let a = index">
                     <ng-container *ngIf="displayDateCondition(d1,5)">
-                      <td >
+                      <td [ngClass]="(d1 == selectedDate)?'today day':'day'">
                         {{ d1 }}
                       </td>
                     </ng-container>
@@ -100,7 +204,7 @@
               <tr class="row">
                 <ng-container *ngFor="let d1 of this.dates; let a = index">
                     <ng-container *ngIf="displayDateCondition(d1,6)">
-                      <td >
+                      <td [ngClass]="(d1 == selectedDate)?'today day':'day'">
                         {{ d1 }}
                       </td>
                     </ng-container>
@@ -109,7 +213,7 @@
               <tr class="row">
                 <ng-container *ngFor="let d1 of this.dates; let a = index">
                     <ng-container *ngIf="displayDateCondition(d1,7)">
-                      <td >
+                      <td [ngClass]="(d1 == selectedDate)?'today day':'day'">
                         {{ d1 }}
                       </td>
                     </ng-container>
@@ -120,22 +224,22 @@
             </table>
           </div>
         </td>
-        <td>
+        <td width="70%">
           <div class="col">
             <ng-container>
-              <table>
+              <table cellPadding="1" cellSpacing="1" border="solid black 2px" width="100%">
                 <tr class="row" *ngFor="let day1 of days; let i = index">
-                  <td [ngClass]="(day1.value==7)?'day sunday':'day'" >
-                    <span >{{ day1.title }}</span> 
+                  <td [ngClass]="{'day sunday':day1.value==7, 'today':displaySelectedDay(day1.value) }" >
+                    <span >{{ day1.title }} I-{{i}}</span> 
                   </td>
                   <ng-container *ngFor="let day2 of days; let j = index">
-                    <td [ngClass]="(day2.value==7)?'day sunday':'day'" *ngIf="j > i">
-                      <span >{{ day2.title }}</span> 
+                    <td [ngClass]="{'day sunday':day2.value==7, 'today':displaySelectedDay(day2.value) }" *ngIf="j > i">
+                      <span >{{ day2.title }} J-{{j}}</span> 
                     </td>
                     <ng-container *ngIf="j == 6">
                       <ng-container *ngFor="let day3 of days; let k = index">
-                        <td [ngClass]="(day3.value==7)?'day sunday':'day'" *ngIf="displayDayCondition(i, k)">
-                          <span >{{ day3.title }} </span> 
+                        <td [ngClass]="{'day sunday':day3.value==7, 'today':displaySelectedDay(day3.value) }" *ngIf="displayDayCondition(i, k)">
+                          <span >{{ day3.title }} K-{{k}}</span> 
                         </td>
                       </ng-container>
                     </ng-container>

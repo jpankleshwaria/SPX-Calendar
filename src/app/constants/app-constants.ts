@@ -12,7 +12,7 @@ export enum DaysEnum {
     THU = 4,
     FRI = 5,
     SAT = 6,
-    SUN = 7
+    SUN = 0
 }
 
 export enum MonthsEnum {
