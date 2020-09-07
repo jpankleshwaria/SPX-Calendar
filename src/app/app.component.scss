@@ -1,6 +1,13 @@
 @import '../assets/css/color.scss';
 @import '../assets/css/mixins.scss';
 
+.day {
+    width: 50px;
+}
+.sunday{
+    color: red;
+}
+
 :host {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 14px;
