@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
   title = 'Spinx-Calendar';
   days = enumSelector(DaysEnum);
   months = enumSelector(MonthsEnum);
-  dates;
+  dates = [];
   selectedYear = 2019;
   selectedMonth = 1;
   selectedDate = 1;
@@ -177,10 +177,16 @@ export class AppComponent implements OnInit {
 
   decYear(){
     this.selectedYear += 1;
+    if(this.selectedMonth != 2){
+      this.dates = appConstant.dateValues;      
+    }
   }
 
   incYear(){
     this.selectedYear -= 1;
+    if(this.selectedMonth != 2){
+      this.dates = appConstant.dateValues;      
+    }
   }
 
   dateClick(dateNum){
@@ -191,6 +197,15 @@ export class AppComponent implements OnInit {
 
   monthClick(monthNum){
     this.selectedMonth = monthNum;
+    if(this.selectedMonth == 2){
+      if((this.selectedYear % 100 === 0) ? (this.selectedYear % 400 === 0) : (this.selectedYear % 4 === 0)){
+        this.dates.slice(29);
+      } else {
+        this.dates.slice(28);
+      }
+    } else {
+      this.dates = appConstant.dateValues; 
+    }
     var currDate = moment( this.selectedMonth + "-"+ this.selectedDate +"-" + this.selectedYear, "MM-DD-YYYY");
     this.selectedDay = currDate.day();
   }
