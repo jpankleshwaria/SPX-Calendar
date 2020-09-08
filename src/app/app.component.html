@@ -39,7 +39,7 @@
       <tr>
         <td width="30%">
           <div class="col-lg-4">
-            <i class="fa fa-caret-left faIco"></i><b> {{ selectedYear }} </b><i class="fa fa-caret-right faIco"></i>
+            <i class="fa fa-caret-left faIco" (click)="incYear()"></i><b> {{ selectedYear }} </b><i class="fa fa-caret-right faIco" (click)="decYear()"></i>
           </div>
         </td>
         <td width="70%">
@@ -48,103 +48,193 @@
             <table cellPadding="1" cellSpacing="1" border="solid black 2px" width=100%>
               <tr class="row">
                 <ng-container *ngFor="let m1 of this.months; let x = index">
-                    <ng-container *ngIf="displayMonthCondition(m1.value,1)">
-                      <td >
+                    <ng-container [ngSwitch]="displayMonthCondition(m1.value,1,31)">
+                      <td [ngClass]="(m1.value == selectedMonth)?'today day':'day'" (click)="monthClick(m1.value)" *ngSwitchCase="1">
                         {{ m1.title }} 1
                       </td>
+                      <td *ngSwitchCase="3">&nbsp;</td>
                     </ng-container>
                   </ng-container>
 
                   <ng-container *ngFor="let m1 of this.months; let x = index">
-
-                    <ng-container *ngIf="displayMonthCondition(m1.value,2)">
-                      <td >
+                    <ng-container [ngSwitch]="displayMonthCondition(m1.value,2,31)">
+                      <td [ngClass]="(m1.value == selectedMonth)?'today day':'day'" (click)="monthClick(m1.value)" *ngSwitchCase="1">
                         {{ m1.title }} 2
                       </td>
+                      <td *ngSwitchCase="3">&nbsp;</td>
                     </ng-container>
                   </ng-container>
 
                   <ng-container *ngFor="let m1 of this.months; let x = index">
-                    <ng-container *ngIf="displayMonthCondition(m1.value,3)">
-                      <td >
+                    <ng-container [ngSwitch]="displayMonthCondition(m1.value,3,31)">
+                      <td [ngClass]="(m1.value == selectedMonth)?'today day':'day'" *ngSwitchCase="1" (click)="monthClick(m1.value)">
                         {{ m1.title }} 3
                       </td>
+                      <td *ngSwitchCase="3">&nbsp;</td>
                     </ng-container>
                   </ng-container>
 
                   <ng-container *ngFor="let m1 of this.months; let x = index">
-                    <ng-container *ngIf="displayMonthCondition(m1.value,4)">
-                      <td >
+                    <ng-container [ngSwitch]="displayMonthCondition(m1.value,4,31)">
+                      <td [ngClass]="(m1.value == selectedMonth)?'today day':'day'" *ngSwitchCase="1" (click)="monthClick(m1.value)">
                         {{ m1.title }} 4
                       </td>
+                      <td *ngSwitchCase="3">&nbsp;</td>
                     </ng-container>
                   </ng-container>
 
-                  <!-- <ng-container *ngFor="let m1 of this.months; let x = index">
-                    <ng-container *ngIf="displayMonthCondition(m1.value,5)">
-                      <td >
+                  <ng-container *ngFor="let m1 of this.months; let x = index">
+                    <ng-container [ngSwitch]="displayMonthCondition(m1.value,5,31)">
+                      <td [ngClass]="(m1.value == selectedMonth)?'today day':'day'" *ngSwitchCase="1" (click)="monthClick(m1.value)">
                         {{ m1.title }} 5
                       </td>
+                      <td *ngSwitchCase="3">&nbsp;</td>
                     </ng-container>
                   </ng-container>
 
                   <ng-container *ngFor="let m1 of this.months; let x = index">
-                    <ng-container *ngIf="displayMonthCondition(m1.value,6)">
-                      <td >
+                    <ng-container [ngSwitch]="displayMonthCondition(m1.value,6,31)">
+                      <td [ngClass]="(m1.value == selectedMonth)?'today day':'day'" *ngSwitchCase="1" (click)="monthClick(m1.value)">
                         {{ m1.title }} 6
                       </td>
+                      <td *ngSwitchCase="3">&nbsp;</td>
                     </ng-container>
                   </ng-container>
 
                   <ng-container *ngFor="let m1 of this.months; let x = index">
-                    <ng-container *ngIf="displayMonthCondition(m1.value,0)">
-                      <td >
+                    <ng-container [ngSwitch]="displayMonthCondition(m1.value,0,31)">
+                      <td [ngClass]="(m1.value == selectedMonth)?'today day':'day'" *ngSwitchCase="1" (click)="monthClick(m1.value)">
                         {{ m1.title }} 7
                       </td>
+                      <td *ngSwitchCase="3">&nbsp;</td>
                     </ng-container>
-                </ng-container> -->
+                </ng-container>
               </tr>
               <tr class="row">
                 <ng-container *ngFor="let m1 of this.months; let x = index">
-                    <ng-container *ngIf="displayMonthCondition(m1.value,5)">
-                      <td >
+                    <ng-container [ngSwitch]="displayMonth2Condition(m1.value,1,30)">
+                      <td [ngClass]="(m1.value == selectedMonth)?'today day':'day'" *ngSwitchCase="1" (click)="monthClick(m1.value)">
                         {{ m1.title }} 1
                       </td>
+                      <td *ngSwitchCase="3">&nbsp;</td>
                     </ng-container>
                   </ng-container>
 
                   <ng-container *ngFor="let m1 of this.months; let x = index">
-
-                    <ng-container *ngIf="displayMonthCondition(m1.value,6)">
-                      <td >
+                    <ng-container [ngSwitch]="displayMonth2Condition(m1.value,2,30)">
+                      <td [ngClass]="(m1.value == selectedMonth)?'today day':'day'" *ngSwitchCase="1" (click)="monthClick(m1.value)">
                         {{ m1.title }} 2
                       </td>
+                      <td *ngSwitchCase="3">&nbsp;</td>
                     </ng-container>
                   </ng-container>
 
                   <ng-container *ngFor="let m1 of this.months; let x = index">
-                    <ng-container *ngIf="displayMonthCondition(m1.value,0)">
-                      <td >
+                    <ng-container [ngSwitch]="displayMonth2Condition(m1.value,3,30)">
+                      <td [ngClass]="(m1.value == selectedMonth)?'today day':'day'" *ngSwitchCase="1" (click)="monthClick(m1.value)">
                         {{ m1.title }} 3
                       </td>
+                      <td *ngSwitchCase="3">&nbsp;</td>
                     </ng-container>
                   </ng-container>
 
                   <ng-container *ngFor="let m1 of this.months; let x = index">
-                    <ng-container *ngIf="displayMonthCondition(m1.value,4)">
-                      <td >
+                    <ng-container [ngSwitch]="displayMonth2Condition(m1.value,4,30)">
+                      <td [ngClass]="(m1.value == selectedMonth)?'today day':'day'" *ngSwitchCase="1" (click)="monthClick(m1.value)">
                         {{ m1.title }} 4
                       </td>
+                      <td *ngSwitchCase="3">&nbsp;</td>
                     </ng-container>
                   </ng-container>
 
+                  <ng-container *ngFor="let m1 of this.months; let x = index">
+                    <ng-container [ngSwitch]="displayMonth2Condition(m1.value,5,30)">
+                      <td [ngClass]="(m1.value == selectedMonth)?'today day':'day'" *ngSwitchCase="1" (click)="monthClick(m1.value)">
+                        {{ m1.title }} 5
+                      </td>
+                      <td *ngSwitchCase="3">&nbsp;</td>
+                    </ng-container>
+                  </ng-container>
+
+                  <ng-container *ngFor="let m1 of this.months; let x = index">
+                    <ng-container [ngSwitch]="displayMonth2Condition(m1.value,6,30)">
+                      <td [ngClass]="(m1.value == selectedMonth)?'today day':'day'" *ngSwitchCase="1" (click)="monthClick(m1.value)">
+                        {{ m1.title }} 6
+                      </td>
+                      <td *ngSwitchCase="3">&nbsp;</td>
+                    </ng-container>
+                  </ng-container>
+
+                  <ng-container *ngFor="let m1 of this.months; let x = index">
+                    <ng-container [ngSwitch]="displayMonth2Condition(m1.value,0,30)">
+                      <td [ngClass]="(m1.value == selectedMonth)?'today day':'day'" *ngSwitchCase="1" (click)="monthClick(m1.value)">
+                        {{ m1.title }} 7
+                      </td>
+                      <td *ngSwitchCase="3">&nbsp;</td>
+                    </ng-container>
+                </ng-container>
               </tr>
               <tr class="row">
                 <ng-container *ngFor="let m1 of this.months; let x = index">
-                    <ng-container *ngIf="x < 7">
-                      <td >
-                        {{ m1.title }}
+                    <ng-container [ngSwitch]="displayMonth3Condition(m1.value,1,30)">
+                      <td [ngClass]="(m1.value == selectedMonth)?'today day':'day'" *ngSwitchCase="1" (click)="monthClick(m1.value)">
+                        {{ m1.title }} 1
                       </td>
+                      <td *ngSwitchCase="3">1&nbsp;</td>
+                    </ng-container>
+                  </ng-container>
+
+                  <ng-container *ngFor="let m1 of this.months; let x = index">
+                    <ng-container [ngSwitch]="displayMonth3Condition(m1.value,2,30)">
+                      <td [ngClass]="(m1.value == selectedMonth)?'today day':'day'" *ngSwitchCase="1" (click)="monthClick(m1.value)">
+                        {{ m1.title }} 2
+                      </td>
+                      <td *ngSwitchCase="3">2&nbsp;</td>
+                    </ng-container>
+                  </ng-container>
+
+                  <ng-container *ngFor="let m1 of this.months; let x = index">
+                    <ng-container [ngSwitch]="displayMonth3Condition(m1.value,3,30)">
+                      <td [ngClass]="(m1.value == selectedMonth)?'today day':'day'" *ngSwitchCase="1" (click)="monthClick(m1.value)">
+                        {{ m1.title }} 3
+                      </td>
+                      <td *ngSwitchCase="3">3&nbsp;</td>
+                    </ng-container>
+                  </ng-container>
+
+                  <ng-container *ngFor="let m1 of this.months; let x = index">
+                    <ng-container [ngSwitch]="displayMonth3Condition(m1.value,4,30)">
+                      <td [ngClass]="(m1.value == selectedMonth)?'today day':'day'" *ngSwitchCase="1" (click)="monthClick(m1.value)">
+                        {{ m1.title }} 4
+                      </td>
+                      <td *ngSwitchCase="3">4&nbsp;</td>
+                    </ng-container>
+                  </ng-container>
+
+                  <ng-container *ngFor="let m1 of this.months; let x = index">
+                    <ng-container [ngSwitch]="displayMonth3Condition(m1.value,5,30)">
+                      <td [ngClass]="(m1.value == selectedMonth)?'today day':'day'" *ngSwitchCase="1" (click)="monthClick(m1.value)">
+                        {{ m1.title }} 5
+                      </td>
+                      <td *ngSwitchCase="3">5&nbsp;</td>
+                    </ng-container>
+                  </ng-container>
+
+                  <ng-container *ngFor="let m1 of this.months; let x = index">
+                    <ng-container [ngSwitch]="displayMonth3Condition(m1.value,6,30)">
+                      <td [ngClass]="(m1.value == selectedMonth)?'today day':'day'" (click)="monthClick(m1.value)" *ngSwitchCase="1">
+                        {{ m1.title }} 6
+                      </td>
+                      <td *ngSwitchCase="3">6&nbsp;</td>
+                    </ng-container>
+                  </ng-container>
+
+                  <ng-container *ngFor="let m1 of this.months; let x = index">
+                    <ng-container [ngSwitch]="displayMonth3Condition(m1.value,0,30)">
+                      <td [ngClass]="(m1.value == selectedMonth)?'today day':'day'" (click)="monthClick(m1.value)" *ngSwitchCase="1">
+                        {{ m1.title }} 7
+                      </td>
+                      <td *ngSwitchCase="3">7&nbsp;</td>
                     </ng-container>
                 </ng-container>
               </tr>
@@ -159,7 +249,7 @@
               <tr class="row">
                 <ng-container *ngFor="let d1 of this.dates; let a = index">
                     <ng-container *ngIf="displayDateCondition(d1,1)">
-                      <td [ngClass]="(d1 == selectedDate)?'today day':'day'">
+                      <td (click)="dateClick(d1)" [ngClass]="(d1 == selectedDate)?'today day':'day'">
                         {{ d1 }}
                       </td>
                     </ng-container>
@@ -168,7 +258,7 @@
               <tr class="row">
                 <ng-container *ngFor="let d1 of this.dates; let a = index">
                     <ng-container *ngIf="displayDateCondition(d1,2)">
-                      <td [ngClass]="(d1 == selectedDate)?'today day':'day'">
+                      <td (click)="dateClick(d1)" [ngClass]="(d1 == selectedDate)?'today day':'day'">
                         {{ d1 }}
                       </td>
                     </ng-container>
@@ -177,7 +267,7 @@
               <tr class="row">
                 <ng-container *ngFor="let d1 of this.dates; let a = index">
                     <ng-container *ngIf="displayDateCondition(d1,3)">
-                      <td [ngClass]="(d1 == selectedDate)?'today day':'day'">
+                      <td (click)="dateClick(d1)" [ngClass]="(d1 == selectedDate)?'today day':'day'">
                         {{ d1 }}
                       </td>
                     </ng-container>
@@ -186,7 +276,7 @@
               <tr class="row">
                 <ng-container *ngFor="let d1 of this.dates; let a = index">
                     <ng-container *ngIf="displayDateCondition(d1,4)">
-                      <td [ngClass]="(d1 == selectedDate)?'today day':'day'">
+                      <td (click)="dateClick(d1)" [ngClass]="(d1 == selectedDate)?'today day':'day'">
                         {{ d1 }}
                       </td>
                     </ng-container>
@@ -195,7 +285,7 @@
               <tr class="row">
                 <ng-container *ngFor="let d1 of this.dates; let a = index">
                     <ng-container *ngIf="displayDateCondition(d1,5)">
-                      <td [ngClass]="(d1 == selectedDate)?'today day':'day'">
+                      <td (click)="dateClick(d1)" [ngClass]="(d1 == selectedDate)?'today day':'day'">
                         {{ d1 }}
                       </td>
                     </ng-container>
@@ -204,7 +294,7 @@
               <tr class="row">
                 <ng-container *ngFor="let d1 of this.dates; let a = index">
                     <ng-container *ngIf="displayDateCondition(d1,6)">
-                      <td [ngClass]="(d1 == selectedDate)?'today day':'day'">
+                      <td (click)="dateClick(d1)" [ngClass]="(d1 == selectedDate)?'today day':'day'">
                         {{ d1 }}
                       </td>
                     </ng-container>
@@ -213,14 +303,12 @@
               <tr class="row">
                 <ng-container *ngFor="let d1 of this.dates; let a = index">
                     <ng-container *ngIf="displayDateCondition(d1,7)">
-                      <td [ngClass]="(d1 == selectedDate)?'today day':'day'">
+                      <td (click)="dateClick(d1)" [ngClass]="(d1 == selectedDate)?'today day':'day'">
                         {{ d1 }}
                       </td>
                     </ng-container>
                 </ng-container>
               </tr>
-
-
             </table>
           </div>
         </td>
@@ -229,16 +317,16 @@
             <ng-container>
               <table cellPadding="1" cellSpacing="1" border="solid black 2px" width="100%">
                 <tr class="row" *ngFor="let day1 of days; let i = index">
-                  <td [ngClass]="{'day sunday':day1.value==7, 'today':displaySelectedDay(day1.value) }" >
+                  <td [ngClass]="{'day sunday':day1.value==0, 'today':displaySelectedDay(day1.value) }" >
                     <span >{{ day1.title }} I-{{i}}</span> 
                   </td>
                   <ng-container *ngFor="let day2 of days; let j = index">
-                    <td [ngClass]="{'day sunday':day2.value==7, 'today':displaySelectedDay(day2.value) }" *ngIf="j > i">
+                    <td [ngClass]="{'day sunday':day2.value==0, 'today':displaySelectedDay(day2.value) }" *ngIf="j > i">
                       <span >{{ day2.title }} J-{{j}}</span> 
                     </td>
                     <ng-container *ngIf="j == 6">
                       <ng-container *ngFor="let day3 of days; let k = index">
-                        <td [ngClass]="{'day sunday':day3.value==7, 'today':displaySelectedDay(day3.value) }" *ngIf="displayDayCondition(i, k)">
+                        <td [ngClass]="{'day sunday':day3.value==0, 'today':displaySelectedDay(day3.value) }" *ngIf="displayDayCondition(i, k)">
                           <span >{{ day3.title }} K-{{k}}</span> 
                         </td>
                       </ng-container>
